@@ -1,0 +1,43 @@
+//Program for finding the minimum and maximum values or elements in an array
+
+//IDE which I used for execution of this code (https://www.onlinegdb.com/online_java_compiler)
+
+import java.lang.*; // Importing the java.lang package for basic language features
+import java.util.*; // Importing the java.util package for utility classes such as Scanner
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the user
+        Scanner scn = new Scanner(System.in);
+        
+        // Read the number of elements in the array
+        int N = scn.nextInt();
+        
+        // Initialize an array to hold the integers
+        int[] arr = new int[N];
+        
+        // Loop to read N integers from the user and store them in the array
+        for (int i = 0; i < N; i++) {
+            arr[i] = scn.nextInt(); // Assign each input to the corresponding index of the array
+        }
+        
+        // Initialize min and max variables to the first element of the array
+        int min = arr[0]; // Assume the first element is the minimum
+        int max = arr[0]; // Assume the first element is the maximum
+        
+        // Loop through the array starting from the second element
+        for (int i = 1; i < N; i++) {
+            // Update min if the current element is less than the current min
+            if (arr[i] < min) {
+                min = arr[i]; // Update min to the current element
+            }
+            // Update max if the current element is greater than the current max
+            if (arr[i] > max) {
+                max = arr[i]; // Update max to the current element
+            }
+        }
+        
+        // Print the maximum and minimum values found in the array
+        System.out.println(max + " " + min);
+    }
+}
