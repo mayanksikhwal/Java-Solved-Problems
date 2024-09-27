@@ -1,6 +1,9 @@
 //Program for sum of elements in an array with user inputs, Enter 1st element as no. of elements in array and then enter the values for those elements, then we're good to run or execute the code.
 
-import java.util.Scanner;
+//IDE which I used for execution of this code (https://www.onlinegdb.com/online_java_compiler)
+
+import java.lang.*; // Importing the java.lang package for basic language features
+import java.util.*; // Importing the java.util package for utility classes such as Scanner
 
 public class Main {
     public static void main(String[] args) {
