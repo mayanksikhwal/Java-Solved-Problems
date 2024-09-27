@@ -1,0 +1,32 @@
+//Program for sum of elements in an array with user inputs, Enter 1st element as no. of elements in array and then enter the values for those elements, then we're good to run or execute the code.
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+// Created a Scanner object to take input from user
+Scanner scn = new Scanner(System.in); 
+
+// Read an integer n which denotes size of array
+int n = scn.nextInt(); 
+
+// Declare an array of integers with size n
+int arr[] = new int[n]; 
+
+// Loop to take n inputs from the user and store them in the array
+for(int i = 0; i < n; i++) {
+    arr[i] = scn.nextInt();  // Store each input at index i
+}
+
+// Initialize a variable to store the sum of elements in the array
+int sum = 0;
+
+// Loop through the array to calculate the sum of all elements
+for(int i = 0; i < n; i++) {
+    sum = sum + arr[i];  // Add each element to sum
+}
+
+// Output the total sum of array elements
+System.out.print(sum);
+    }
+}
