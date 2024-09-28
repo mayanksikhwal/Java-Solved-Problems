@@ -1,0 +1,37 @@
+//Program to get the count of frequency of a specific element in an array
+
+import java.util.Scanner;
+
+public class FrequencyOfXInArray {
+
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        
+        // Input: Size of the array
+        int n = scn.nextInt();
+        
+        // Initialize the array
+        int[] A = new int[n];
+        
+        // Input: Elements of the array
+        for (int i = 0; i < n; i++) {
+            A[i] = scn.nextInt();
+        }
+        
+        // Input: The number B to find its frequency
+        int B = scn.nextInt();
+        
+        // Variable to store the frequency count
+        int count = 0;
+        
+        // Traverse the array and count occurrences of B
+        for (int i = 0; i < n; i++) {
+            if (A[i] == B) {
+                count++;
+            }
+        }
+        
+        // Output the result
+        System.out.println(count);
+    }
+}
