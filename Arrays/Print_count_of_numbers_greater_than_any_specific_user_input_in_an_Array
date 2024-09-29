@@ -1,0 +1,36 @@
+//Program to print the count of numbers greater than a specific user input element in an Array.
+
+import java.util.Scanner;  // Importing Scanner class for user input
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);  // Scanner object to take input from user
+
+        // Input the size of the array
+        int n = scn.nextInt();  // Read the number of elements in the array
+        
+        // Initialize the array with size 'n'
+        int[] A = new int[n];
+        
+        // Input the elements of the array
+        for (int i = 0; i < n; i++) {
+            A[i] = scn.nextInt();  // Store each element in array A
+        }
+        
+        // Input the element B
+        int B = scn.nextInt();  // Read the integer B
+        
+        // Initialize a variable to count elements greater than B
+        int count = 0;
+        
+        // Traverse through the array to count elements greater than B
+        for (int i = 0; i < n; i++) {
+            if (A[i] > B) {  // If the element is greater than B
+                count++;  // Increment the count
+            }
+        }
+        
+        // Output the count of elements greater than B
+        System.out.println(count);
+    }
+}
