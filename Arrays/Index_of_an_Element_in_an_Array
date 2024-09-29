@@ -1,0 +1,35 @@
+//Program to get the index of an element in an array.
+
+import java.util.Scanner;  // Importing Scanner class to take input from the user
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);  // Creating a Scanner object for input
+        
+        // Input the size of the array
+        int n = scn.nextInt();  // Reading the number of elements in the array
+        
+        // Input array elements
+        int[] A = new int[n];  // Initializing the array with size 'n'
+
+        for (int i = 0; i < n; i++) {  // Loop to take 'n' inputs from the user
+            A[i] = scn.nextInt();  // Storing each input in the array
+        }
+        
+        // Input the element B to search for
+        int B = scn.nextInt();  // Reading the element B, whose position we need to find
+        
+        // Search for the element B in the array and print its index if found, else -1
+        int result = -1;  // Initializing result as -1, which indicates 'not found'
+
+        for (int i = 0; i < n; i++) {  // Loop through the array to find B
+            if (A[i] == B) {  // If the element at index i is equal to B
+                result = i;  // Store the index in 'result'
+                break;  // Exit the loop as soon as we find B
+            }
+        }
+        
+        // Output the result
+        System.out.println(result);  // Print the index of B if found, else print -1
+    }
+}
