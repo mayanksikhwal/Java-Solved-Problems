@@ -1,0 +1,39 @@
+//Program to shift each element of an integer array to the right by one position, with the last element moved to the first, and print the modified array.
+
+import java.lang.*;  // Importing the Java language package (though it's unnecessary as it's imported by default)
+import java.util.*;  // Importing the utility package for using Scanner for input
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating a scanner object to read input from the user
+        Scanner scanner = new Scanner(System.in);
+        
+        // Reading the size of the array from the user
+        int N = scanner.nextInt();
+        
+        // Initializing the array of size N
+        int[] A = new int[N];
+        
+        // Loop to take input values into the array from the user
+        for (int i = 0; i < N; i++) {
+            A[i] = scanner.nextInt();
+        }
+        
+        // Storing the last element of the array
+        int lastElement = A[N - 1];
+        
+        // Shifting all elements to the right by one position
+        // Starting from the last index and moving backward
+        for (int i = N - 1; i > 0; i--) {
+            A[i] = A[i - 1];
+        }
+        
+        // Placing the last element at the first position
+        A[0] = lastElement;
+        
+        // Printing the modified array after shifting
+        for (int i = 0; i < N; i++) {
+            System.out.print(A[i] + " ");
+        }
+    }
+}
