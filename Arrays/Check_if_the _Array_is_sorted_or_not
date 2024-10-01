@@ -1,0 +1,35 @@
+//Program to check if the Array is in Sorted order or not
+
+import java.util.Scanner;  // Import Scanner class for input handling
+import java.util.ArrayList; // Import ArrayList class for dynamic array functionality
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to read user input
+        Scanner scn = new Scanner(System.in);
+
+        // Read the size of the array from user input
+        int n = scn.nextInt();
+
+        // Initialize an ArrayList to store the elements of the array
+        ArrayList<Integer> A = new ArrayList<>();
+
+        // Loop to read the elements of the array from user input
+        for (int i = 0; i < n; i++) {
+            A.add(scn.nextInt()); // Add each input element to the ArrayList
+        }
+
+        // Loop to check if the array is sorted in non-decreasing order
+        for (int i = 1; i < A.size(); i++) {
+            // Compare the current element with the previous element
+            if (A.get(i) < A.get(i - 1)) {
+                // If any element is smaller than the previous one, the array is not sorted
+                System.out.println(0); // Output 0 indicating the array is not sorted
+                return; // Exit the program as sorting condition is violated
+            }
+        }
+
+        // If the loop completes without finding any unordered elements, the array is sorted
+        System.out.println(1); // Output 1 indicating the array is sorted
+    }
+}
