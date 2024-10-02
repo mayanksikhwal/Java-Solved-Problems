@@ -1,0 +1,35 @@
+//Program to check if the Array is in strictly Decreasing Order or not. (Strictly Decreasing - Array should neither be in increasing order nor to be equal with value of prev element in the Array).
+
+import java.util.*; // Importing the java.util package for utility classes such as ArrayList and Scanner
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to take input from the user
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask user for the size of the ArrayList
+        System.out.print("Enter the number of elements: ");
+        int n = scanner.nextInt();
+
+        // Create an ArrayList to store integers
+        ArrayList<Integer> A = new ArrayList<>();
+
+        // Prompt the user to enter the elements
+        System.out.println("Enter the elements:");
+        for (int i = 0; i < n; i++) {
+            A.add(scanner.nextInt()); // Add each element to the ArrayList
+        }
+
+        // Check if the ArrayList is strictly decreasing
+        int result = 1; // Assume it is strictly decreasing initially
+        for (int i = 0; i < A.size() - 1; i++) {
+            if (A.get(i) <= A.get(i + 1)) {
+                result = 0; // Set result to 0 if the condition is violated
+                break; // Exit the loop early
+            }
+        }
+
+        // Output the result
+        System.out.println(result);
+    }
+}
