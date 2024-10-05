@@ -1,0 +1,45 @@
+//Program to print a NxN matrix from user input to a wave matrix (row wise), (you can interchange the value of i to j to get the output of wave matrix in column wise format).
+
+import java.lang.*;  // Importing the Java core package (not mandatory for this program)
+import java.util.*;  // Importing utility package for Scanner and ArrayList
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);  // Creating Scanner object to take input from user
+        System.out.print("Enter the number for NxN matrix: ");
+        int N = sc.nextInt();  // Input for the size of the matrix (NxN)
+
+        int[][] Mat = new int[N][N];  // Creating a 2D array of size N x N
+        System.out.println("Enter the elements for the matrix: ");
+        
+        // Loop to fill the matrix with user inputs
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                Mat[i][j] = sc.nextInt();  // Reading matrix elements from user
+            }
+        }
+
+        ArrayList<Integer> result = new ArrayList<>();  // ArrayList to store the result in wave form
+
+        // Loop through the matrix row by row
+        for (int i = 0; i < N; i++) {
+            if (i % 2 == 0) {
+                // For even-indexed rows (left to right traversal)
+                for (int j = 0; j < N; j++) {
+                    result.add(Mat[i][j]);  // Add elements from left to right
+                }
+            } else {
+                // For odd-indexed rows (right to left traversal)
+                for (int j = N - 1; j >= 0; j--) {
+                    result.add(Mat[i][j]);  // Add elements from right to left
+                }
+            }
+        }
+
+        // Output the result in wave form
+        System.out.print("The result for wave matrix (row wise) is: ");
+        for (int i = 0; i < result.size(); i++) {
+            System.out.print(result.get(i) + " ");  // Print each element of the wave matrix
+        }
+    }
+}
