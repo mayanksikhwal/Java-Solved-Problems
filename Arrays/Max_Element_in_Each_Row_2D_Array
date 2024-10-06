@@ -1,0 +1,48 @@
+//Program to print the max Element in a Row in a 2D Array
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // Scanner object to take input from the user
+        Scanner sc = new Scanner(System.in);
+
+        // Prompt user to input the number of rows and columns
+        System.out.print("Enter the number of rows (N): ");
+        int N = sc.nextInt();
+
+        System.out.print("Enter the number of columns (M): ");
+        int M = sc.nextInt();
+
+        // ArrayList to store the result, which will contain the maximum value of each row
+        ArrayList<Integer> result = new ArrayList<>();
+
+        // Loop to process each row of the 2D array
+        for (int i = 0; i < N; i++) {
+            // Prompt to enter the elements of the current row
+            System.out.println("Enter elements for row " + (i + 1) + ":");
+            
+            // Initialize max to the smallest possible integer value for each row
+            int max = Integer.MIN_VALUE;
+
+            // Loop to process each element in the row
+            for (int j = 0; j < M; j++) {
+                // Read each element in the row
+                int value = sc.nextInt();
+                
+                // Update max if the current value is greater
+                if (value > max) {
+                    max = value;
+                }
+            }
+
+            // Add the maximum value of the current row to the result list
+            result.add(max);
+        }
+
+        // Output the maximum values from each row
+        System.out.println("The largest elements in each row are: " + result);
+    }
+}
