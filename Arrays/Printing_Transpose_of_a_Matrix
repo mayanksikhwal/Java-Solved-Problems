@@ -1,0 +1,39 @@
+//Program to print Transpose of a NxM Matrix
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Prompt the user to enter the number of rows and columns for the matrix
+        System.out.println("Enter rows and columns: ");
+        int n = sc.nextInt(); // Number of rows
+        int m = sc.nextInt(); // Number of columns
+        
+        // Initialize the matrix A with the specified dimensions
+        int A[][] = new int[n][m];
+        
+        // Prompt the user to enter the elements of the matrix
+        System.out.println("Enter the matrix elements:");
+        for (int i = 0; i < n; i++) // Iterate over each row
+            for (int j = 0; j < m; j++) // Iterate over each column
+                A[i][j] = sc.nextInt(); // Read the matrix element from user input
+        
+        // Create a new matrix ans for the transposed result
+        int[][] ans = new int[m][n]; // Transposed matrix
+        
+        // Transpose the matrix A and store the result in ans
+        for (int i = 0; i < n; i++) // Iterate over each row of A
+            for (int j = 0; j < m; j++) // Iterate over each column of A
+                ans[j][i] = A[i][j]; // Assign the transposed value
+        
+        // Print the transposed matrix
+        System.out.println("Transposed Matrix:");
+        for (int[] row : ans) { // Iterate over each row of the transposed matrix
+            for (int elem : row) // Iterate over each element in the row
+                System.out.print(elem + " "); // Print the element
+            System.out.println(); // Move to the next line after each row
+        }
+    }
+}
