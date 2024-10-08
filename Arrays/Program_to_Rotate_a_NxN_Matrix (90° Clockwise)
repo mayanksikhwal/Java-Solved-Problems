@@ -1,0 +1,54 @@
+//Program to Rotate a NxN Matrix (90° Clockwise)
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Prompt user to enter the size of the matrix (n x n)
+        System.out.print("Enter the size of the matrix (n): ");
+        int n = sc.nextInt();
+        
+        // Initialize a 2D ArrayList to store the matrix
+        ArrayList<ArrayList<Integer>> matrix = new ArrayList<>(n);
+        
+        // Prompt user to enter matrix elements row by row
+        System.out.println("Enter the matrix elements row by row:");
+        for (int i = 0; i < n; i++) {
+            matrix.add(new ArrayList<>(n)); // Add a new row to the matrix
+            for (int j = 0; j < n; j++) {
+                matrix.get(i).add(sc.nextInt()); // Add elements to the current row
+            }
+        }
+
+        // Step 1: Transpose the matrix (swap elements across the diagonal)
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                // Swap matrix[i][j] with matrix[j][i]
+                int temp = matrix.get(i).get(j);
+                matrix.get(i).set(j, matrix.get(j).get(i));
+                matrix.get(j).set(i, temp);
+            }
+
+            // Step 2: Reverse the current row to achieve 90-degree rotation
+            for (int j = 0; j < n / 2; j++) {
+                // Swap elements from both ends of the row
+                int temp = matrix.get(i).get(j);
+                matrix.get(i).set(j, matrix.get(i).get(n - j - 1));
+                matrix.get(i).set(n - j - 1, temp);
+            }
+        }
+
+        // Print the rotated matrix
+        System.out.println("Rotated matrix by 90 degrees (clockwise):");
+        for (ArrayList<Integer> row : matrix) {
+            // Print each row of the matrix
+            for (int elem : row) {
+                System.out.print(elem + " "); // Print elements in the row
+            }
+            System.out.println(); // Move to the next line for the next row
+        }
+    }
+}
