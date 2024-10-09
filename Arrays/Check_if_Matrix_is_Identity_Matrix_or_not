@@ -1,0 +1,45 @@
+//Program to check if the given matrix is an Identity matrix or not
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Prompt for matrix size
+        System.out.print("Enter the size of the matrix (N): ");
+        int N = sc.nextInt(); // Input size of the matrix
+        
+        // Initialize an ArrayList to store the matrix elements
+        ArrayList<ArrayList<Integer>> matrix = new ArrayList<>(N);
+        
+        // Prompt for matrix input
+        System.out.println("Enter the elements of the matrix row by row:");
+        for (int i = 0; i < N; i++) {
+            ArrayList<Integer> row = new ArrayList<>(N); // Create a row for each i
+            for (int j = 0; j < N; j++) {
+                // Print prompt for specific element at position [i][j]
+                System.out.print("Element at [" + i + "][" + j + "]: ");
+                row.add(sc.nextInt()); // Input matrix elements row by row
+            }
+            matrix.add(row); // Add row to the matrix
+        }
+
+        // Check if the matrix is an identity matrix
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                // Identity matrix condition:
+                // Diagonal elements should be 1 and non-diagonal elements should be 0
+                if ((i == j && matrix.get(i).get(j) != 1) || (i != j && matrix.get(i).get(j) != 0)) {
+                    // If the condition fails, print that it's not an identity matrix and exit
+                    System.out.println("Result: Not an identity matrix");
+                    return; // Exit the function early if not identity matrix
+                }
+            }
+        }
+        
+        // If all checks pass, the matrix is an identity matrix
+        System.out.println("Result: The matrix is an identity matrix");
+    }
+}
