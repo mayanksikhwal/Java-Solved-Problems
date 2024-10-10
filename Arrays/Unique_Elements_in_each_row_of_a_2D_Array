@@ -1,0 +1,61 @@
+//Program to print the unique elements in each row of a given 2D Array
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Prompt the user to enter the number of rows
+        System.out.print("Enter the number of rows: ");
+        int numRows = sc.nextInt();  // Input the number of rows
+        
+        // Initialize a 2D dynamic array (ArrayList of ArrayLists)
+        ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
+        
+        // Loop through each row
+        for (int i = 1; i <= numRows; i++) {
+            // Prompt the user to enter the number of columns for each row
+            System.out.print("Enter the no. of columns for row number " + i + " : ");
+            int numCols = sc.nextInt();  // Input the number of columns for the current row
+            
+            // Initialize an ArrayList to store the elements of the current row
+            ArrayList<Integer> row = new ArrayList<>();
+            
+            // Loop through each column to get elements for the current row
+            for (int j = 0; j < numCols; j++) {
+                System.out.print("Enter element: ");  // Prompt for each element in the row
+                row.add(sc.nextInt());  // Add the element to the current row
+            }
+            
+            // Add the populated row to the matrix (2D ArrayList)
+            matrix.add(row);
+        }
+        
+        // Print unique elements row-wise
+        System.out.println("Unique elements row-wise:");
+        
+        // Loop through each row in the matrix
+        for (ArrayList<Integer> row : matrix) {
+            ArrayList<Integer> uniqueRow = new ArrayList<>();  // To store unique elements for the current row
+            
+            // Check each element in the current row
+            for (int i = 0; i < row.size(); i++) {
+                int count = 0;  // Initialize count for frequency of the current element
+                
+                // Compare the current element with other elements in the row
+                for (int j = 0; j < row.size(); j++) {
+                    if (row.get(i).equals(row.get(j))) count++;  // Increment count if a match is found
+                }
+                
+                // If the element appears only once, add it to the uniqueRow list
+                if (count == 1) uniqueRow.add(row.get(i));
+            }
+            
+            // Print unique elements for the current row
+            for (int num : uniqueRow) System.out.print(num + " ");
+            System.out.println();  // New line after printing each row's unique elements
+        }
+    }
+}
