@@ -1,0 +1,74 @@
+//Program to add all the elements of given matrices
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to take user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Input: Number of rows for the matrices
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+
+        // Input: Number of columns for the matrices
+        System.out.print("Enter the number of columns: ");
+        int cols = scanner.nextInt();
+
+        // Initialize matrix A as a list of lists (2D ArrayList)
+        ArrayList<ArrayList<Integer>> A = new ArrayList<>();
+        System.out.println("Enter elements of matrix A:");
+        
+        // Input elements for matrix A from the user
+        for (int i = 0; i < rows; i++) {
+            ArrayList<Integer> row = new ArrayList<>();
+            for (int j = 0; j < cols; j++) {
+                // Add each element to the current row
+                row.add(scanner.nextInt());
+            }
+            // Add the current row to matrix A
+            A.add(row);
+        }
+
+        // Initialize matrix B as a list of lists (2D ArrayList)
+        ArrayList<ArrayList<Integer>> B = new ArrayList<>();
+        System.out.println("Enter elements of matrix B:");
+        
+        // Input elements for matrix B from the user
+        for (int i = 0; i < rows; i++) {
+            ArrayList<Integer> row = new ArrayList<>();
+            for (int j = 0; j < cols; j++) {
+                // Add each element to the current row
+                row.add(scanner.nextInt());
+            }
+            // Add the current row to matrix B
+            B.add(row);
+        }
+
+        // Initialize result matrix to store the sum of matrices A and B
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+
+        // Matrix addition: Loop through each element of matrices A and B
+        for (int i = 0; i < rows; i++) {
+            ArrayList<Integer> row = new ArrayList<>();
+            for (int j = 0; j < cols; j++) {
+                // Add corresponding elements of A and B, and store in result
+                row.add(A.get(i).get(j) + B.get(i).get(j));
+            }
+            // Add the computed row to the result matrix
+            result.add(row);
+        }
+
+        // Output: Display the result matrix
+        System.out.println("Resultant matrix after addition:");
+        for (ArrayList<Integer> row : result) {
+            for (Integer element : row) {
+                // Print each element in the row with a space
+                System.out.print(element + " ");
+            }
+            // Move to the next line after printing each row
+            System.out.println();
+        }
+    }
+}
