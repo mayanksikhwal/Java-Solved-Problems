@@ -1,0 +1,52 @@
+//Program to get the sum of Jth Column in a NxM Matrix
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object for user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompting for the number of rows in the 2D array
+        System.out.println("Enter the number of rows in the array: ");
+        int rows = scanner.nextInt();
+
+        // Prompting for the number of columns in the 2D array
+        System.out.println("Enter the number of columns in the array: ");
+        int cols = scanner.nextInt();
+
+        // Initializing the 2D array with the specified dimensions
+        int[][] A = new int[rows][cols];
+
+        // Prompting the user to enter the elements of the array
+        System.out.println("Enter the elements of the array (row by row): ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                // Storing user input into the 2D array
+                A[i][j] = scanner.nextInt();
+            }
+        }
+
+        // Prompting for the column index to sum
+        System.out.println("Enter the column index to sum: ");
+        int B = scanner.nextInt();
+
+        // Calling the solve method to get the sum of the specified column
+        int result = new Main().solve(A, B);
+
+        // Outputting the result
+        System.out.println("Sum of column " + B + " is: " + result);
+    }
+
+    // Method to calculate the sum of the B-th column in the 2D array
+    public int solve(int[][] A, int B) {
+        int sum = 0; // Initialize sum to 0
+
+        // Iterating through each row of the array
+        for (int r = 0; r < A.length; r++) {
+            // Adding the value of the B-th column of the current row to the sum
+            sum += A[r][B]; 
+        }
+        return sum; // Returning the final sum of the column
+    }
+}
