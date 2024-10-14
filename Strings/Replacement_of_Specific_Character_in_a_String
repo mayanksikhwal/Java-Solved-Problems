@@ -1,0 +1,38 @@
+//Program to replace a specific character in a string
+
+import java.util.Scanner; // Importing the Scanner class to take input from the user
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Creating a Scanner object to take input from the user
+        Scanner sc = new Scanner(System.in);
+
+        // Prompting the user to enter a string and storing it in variable 'A'
+        System.out.println("Please enter a string: ");
+        String A = sc.next();
+
+        // Prompting the user to enter the character they want to replace and storing it in variable 'B'
+        System.out.println("Please enter the character to be replaced: ");
+        char B = sc.next().charAt(0);
+
+        // Prompting the user to enter the replacement character and storing it in 'replacementChar'
+        System.out.println("Please enter the replacement character: ");
+        char replacementChar = sc.next().charAt(0);
+
+        // Creating a copy of the original string 'A' in 'ans'
+        String ans = A;
+
+        // Looping through the string 'ans' to find and replace occurrences of character 'B'
+        for (int i = 0; i < ans.length(); i++) {
+            // If the current character matches 'B', replace it with 'replacementChar'
+            if (ans.charAt(i) == B) {
+                // Rebuilding the string with the replaced character
+                ans = ans.substring(0, i) + replacementChar + ans.substring(i + 1); 
+            }
+        }
+
+        // Printing the modified string after all replacements are made
+        System.out.println("Modified string: " + ans);
+    }
+}
