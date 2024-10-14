@@ -1,0 +1,39 @@
+//Program to count the Uppercase and Lowercase letters present in a String
+
+import java.util.Scanner; // Importing the Scanner class to take user input
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating a Scanner object to read input from the user
+        Scanner scn = new Scanner(System.in);
+        
+        // Prompting the user to enter a string
+        System.out.println("Please enter a string: ");
+        String str = scn.next(); // Reading the input string from the user
+
+        // Initializing counters for uppercase and lowercase letters
+        int uppercaseCount = 0;
+        int lowercaseCount = 0;
+
+        // Loop through each character in the string
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i); // Getting the character at index i
+
+            // Check if the character is an uppercase letter (between 'A' and 'Z')
+            if (ch >= 'A' && ch <= 'Z') {
+                uppercaseCount++; // Incrementing uppercase letter counter
+            } 
+            // Check if the character is a lowercase letter (between 'a' and 'z')
+            else if (ch >= 'a' && ch <= 'z') {
+                lowercaseCount++; // Incrementing lowercase letter counter
+            }
+        }
+
+        // Displaying the count of uppercase letters
+        System.out.println("Number of uppercase letters: " + uppercaseCount);
+        
+        // Displaying the count of lowercase letters
+        System.out.println("Number of lowercase letters: " + lowercaseCount);
+
+    }
+}
