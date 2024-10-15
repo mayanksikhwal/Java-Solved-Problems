@@ -1,0 +1,50 @@
+//Program to count the number of vowels and consonants present in a given string
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Initialize the scanner to take user input
+        Scanner scn = new Scanner(System.in);
+
+        // Prompt the user for the number of test cases
+        System.out.println("Enter the number of test cases: ");
+        int T = scn.nextInt();
+        scn.nextLine(); // Consume the newline left over after entering the integer
+
+        // Loop through each test case
+        for (int i = 0; i < T; i++) {
+
+            // Ask the user for the input string in each test case
+            System.out.println("Enter the string: ");
+            String S = scn.nextLine(); // Read the entire input string
+
+            // Initialize counters for vowels and consonants
+            int vowels = 0;
+            int consonants = 0;
+
+            // Loop through each character in the string
+            for (int j = 0; j < S.length(); j++) {
+                char ch = S.charAt(j); // Access each character in the string
+
+                /*
+                Convert the character to lowercase to ensure uniform comparison,
+                this step handles both uppercase and lowercase letters.
+                */
+                char lowerCh = Character.toLowerCase(ch);
+
+                // Check if the character is a vowel
+                if (lowerCh == 'a' || lowerCh == 'e' || lowerCh == 'i' || lowerCh == 'o' || lowerCh == 'u') {
+                    vowels++; // Increment vowel count if a vowel is found
+                }
+                // Check if the character is a consonant (an alphabetic character that's not a vowel)
+                else if (lowerCh >= 'a' && lowerCh <= 'z') {
+                    consonants++; // Increment consonant count if it's an alphabetic consonant
+                }
+            }
+
+            // Output the result for the current test case
+            System.out.println("Vowels: " + vowels + ", Consonants: " + consonants);
+        }
+    }
+}
