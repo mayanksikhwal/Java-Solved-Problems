@@ -1,0 +1,32 @@
+//Toggle the Case of Each Character in a String (If a letter is uppercase, it is converted to lowercase, and if it's lowercase, it is converted to uppercase).
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a scanner object to capture user input
+        Scanner sc = new Scanner(System.in);
+        
+        // Prompt the user to enter a string
+        System.out.println("Please enter a string: ");
+        String A = sc.nextLine();  // Read the user input
+        
+        // Call the 'solve' function and print the toggled case string
+        System.out.println("Toggled case string: " + solve(A));
+    }
+
+    // Function to toggle the case of each character in the string
+    public static String solve(String A) {
+        // Convert the input string to a character array
+        char[] arr = A.toCharArray();
+        
+        // Iterate over each character in the array
+        for (int i = 0; i < arr.length; i++) {
+            // If the character is uppercase, convert to lowercase; otherwise, convert to uppercase
+            arr[i] = Character.isUpperCase(arr[i]) ? Character.toLowerCase(arr[i]) : Character.toUpperCase(arr[i]);
+        }
+        
+        // Convert the modified character array back to a string and return it
+        return new String(arr);
+    }
+}
