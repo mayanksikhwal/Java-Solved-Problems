@@ -1,0 +1,44 @@
+//Program to reverse the string from r to l
+
+import java.util.Scanner;  // Import the Scanner class for user input
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to take input from the user
+        Scanner sc = new Scanner(System.in);
+        
+        // Prompt the user to input the string that needs to be reversed
+        System.out.println("Please enter the string to reverse: ");
+        
+        // Read the user's input string
+        String A = sc.nextLine();
+        
+        // Call the solve method to reverse the string and print the result
+        System.out.println("Reversed string: " + solve(A));
+    }
+
+    // Function to reverse the given string
+    public static String solve(String A) {
+        // Convert the input string A to a character array
+        char[] arr = A.toCharArray();
+        
+        // Initialize two pointers: start at the beginning and end at the last character
+        int start = 0;
+        int end = arr.length - 1;
+        
+        // Loop until the two pointers meet in the middle
+        while (start < end) {
+            // Swap the characters at the start and end positions
+            char temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            
+            // Move the start pointer forward and the end pointer backward
+            start++;
+            end--;
+        }
+        
+        // Convert the modified character array back into a string and return it
+        return new String(arr);
+    }
+}
