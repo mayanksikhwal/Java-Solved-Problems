@@ -1,0 +1,56 @@
+//Program to print the reverse of words in a string
+
+import java.util.Scanner; // Importing Scanner class for user input
+import java.util.Stack;   // Importing Stack class to use stack data structure
+
+public class Main { 
+    // Method to reverse words in a given string
+    public String WordReversal(String A) {
+        Stack<String> st = new Stack<>(); // Creating a stack to store words
+        
+        // Loop through each character in the string
+        for (int i = 0; i < A.length(); i++) {
+            String word = ""; // Initialize an empty string to hold the current word
+            
+            // Build the word until a space or end of string is encountered
+            while (i < A.length() && A.charAt(i) != ' ') {
+                word += A.charAt(i); // Append current character to the word
+                i++; // Move to the next character
+            }
+            
+            // If the constructed word is not empty, push it onto the stack
+            if (!word.equals("")) {
+                st.push(word); // Push the word onto the stack
+            }
+        }
+        
+        // Building the final reversed string from the stack
+        String ans = ""; // Initialize an empty string to hold the final result
+        
+        // While the stack is not empty, pop words to construct the reversed string
+        while (!st.empty()) {
+            ans += st.peek(); // Add the top element of the stack to the answer
+            st.pop(); // Remove the top element from the stack
+            
+            // Add a space if the stack is not empty to separate words
+            if (!st.empty()) {
+                ans += " "; // Append a space after the word
+            }
+        }
+        
+        return ans; // Return the final reversed string
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Create a Scanner object for user input
+        System.out.print("Enter a string: "); // Prompt the user for input
+        String input = scanner.nextLine(); // Read the entire line of user input
+        
+        Main solution = new Main(); // Create an instance of the Main class
+        String result = solution.WordReversal(input); // Call the WordReversal method
+        
+        // Output the result
+        System.out.println("Reversed string: \"" + result + "\""); // Print the reversed string
+
+    }
+}
