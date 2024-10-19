@@ -1,0 +1,93 @@
+//Program to print the sum of range of a query having L and R as the range of indices from 0 to n-1 index
+
+import java.util.Scanner;
+
+public class Main {
+
+    // Method to calculate the sum for the given range queries
+    public long[] rangeSum(int[] A, int[][] B) {
+        int n = A.length;  // Length of the array A
+        int m = B.length;  // Number of queries in array B
+        
+        // Step 1: Create a prefix sum array that will store cumulative sums
+        // We create an array of size n + 1 because we need an extra space to make indexing easier
+        long[] pref = new long[n + 1];
+        
+        // Step 2: Initialize the first element of the prefix sum array
+        // This is the same as the first element of the input array
+        pref[0] = A[0]; 
+        
+        // Step 3: Build the prefix sum array
+        // The prefix sum array stores cumulative sums so that we can easily get the sum of any subarray
+        for (int i = 1; i < n; i++) {
+            pref[i] = pref[i - 1] + A[i];  // Each element in the prefix array is the sum of all elements up to that index
+        }
+        
+        // Step 4: Create an array to store the results for each query
+        long[] ans = new long[m];
+        
+        // Step 5: Process each query in array B
+        for (int i = 0; i < m; i++) {
+            int L = B[i][0];  // Left boundary of the range (0-based index)
+            int R = B[i][1];  // Right boundary of the range (0-based index)
+            
+            // Step 6: Check if the query indices are within bounds
+            if (L >= 0 && R < n) {
+                // If valid, calculate the sum for the range from L to R
+                // pref[R] gives the sum of elements from 0 to R
+                // pref[L - 1] gives the sum of elements from 0 to L-1
+                // Subtracting pref[L - 1] from pref[R] gives the sum from L to R
+                ans[i] = pref[R] - (L > 0 ? pref[L - 1] : 0);  // Use a ternary operator to handle the case where L = 0
+            } else {
+                // If L or R are out of bounds, set the result to -1
+                ans[i] = -1;
+            }
+        }
+        
+        // Step 7: Return the array of results (sum of each range query)
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);  // Create a Scanner object for reading input
+
+        // User input for the array size
+        System.out.print("Enter the size of the array A: ");
+        int n = scanner.nextInt();  // Read the size of the array
+        
+        // User input for the elements of the array A
+        int[] A = new int[n];  // Declare the array A
+        System.out.println("Enter the elements of array A:");
+        for (int i = 0; i < n; i++) {
+            A[i] = scanner.nextInt();  // Read each element of array A
+        }
+        
+        // User input for the number of queries
+        System.out.print("Enter the number of queries: ");
+        int m = scanner.nextInt();  // Read the number of queries
+        
+        // User input for the queries
+        int[][] B = new int[m][2];  // Declare the 2D array for storing queries
+        System.out.println("Enter the queries in the format L R (0-based index):");
+        for (int i = 0; i < m; i++) {
+            B[i][0] = scanner.nextInt();  // Read the left boundary L of the query
+            B[i][1] = scanner.nextInt();  // Read the right boundary R of the query
+        }
+        
+        // Create an object of the Solution class to use its methods
+        Main solution = new Main();
+        
+        // Call the rangeSum method to compute the results for each query
+        long[] result = solution.rangeSum(A, B);
+        
+        // Display the results
+        System.out.println("The sums for the given ranges are:");
+        for (long sum : result) {
+            if (sum != -1) {
+                System.out.println(sum);  // Print the sum if the query was valid
+            } else {
+                System.out.println("Query out of bounds");  // Print an error message if the query was invalid
+            }
+        }
+    }
+}
