@@ -1,0 +1,60 @@
+//Program to get the longest Palindromic Substring in a given String of Characters
+
+import java.util.Scanner;
+
+public class Solution {
+
+    // Helper method to expand around the center and find the longest palindrome
+    public String expandAroundCenter(String s, int c1, int c2) {
+        int l = c1, r = c2;
+        int n = s.length();
+        
+        // Expanding the window as long as the characters at l and r are equal and within bounds
+        while (l >= 0 && r <= n - 1 && s.charAt(l) == s.charAt(r)) {
+            l--; // Move the left pointer to the left
+            r++; // Move the right pointer to the right
+        }
+        
+        // Returning the substring that is a palindrome
+        return s.substring(l + 1, r);
+    }
+
+    // Main method to find the longest palindromic substring
+    public String longestPalindrome(String A) {
+        int n = A.length();
+        
+        // Edge case: If the input string is empty, return an empty string
+        if (n == 0) return "";
+        
+        // Initially consider the first character as the longest palindrome (single character palindrome)
+        String longest = A.substring(0, 1); 
+
+        // Iterate through the string to find the longest palindrome centered at each character
+        for (int i = 0; i < n - 1; i++) {
+            // Case 1: Checking for palindrome of odd length (single character as center)
+            String p1 = expandAroundCenter(A, i, i); 
+            if (p1.length() > longest.length())
+                longest = p1; // Update the longest palindrome found so far
+
+            // Case 2: Checking for palindrome of even length (two adjacent characters as center)
+            String p2 = expandAroundCenter(A, i, i + 1); 
+            if (p2.length() > longest.length())
+                longest = p2; // Update the longest palindrome if the even-length one is longer
+        }
+
+        // Return the longest palindrome found in the string
+        return longest; 
+    }
+
+    public static void main(String[] args) {
+        // Prompt to accept user input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a string: ");
+        String input = scanner.nextLine(); // Taking user input
+        
+        // Call the longestPalindrome method and display the result
+        Solution solution = new Solution();
+        String result = solution.longestPalindrome(input);
+        System.out.println("Longest Palindromic Substring: " + result);
+    }
+}
