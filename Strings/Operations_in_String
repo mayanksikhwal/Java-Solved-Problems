@@ -1,0 +1,55 @@
+//Program to perform some normal operations in a given String
+
+import java.util.Scanner;
+
+public class Main {
+
+    // Method to perform the string operations as described in the problem
+    public String solve(String A) {
+        // Step 1: Concatenate the string with itself
+        // A + A doubles the string (e.g., if A = "abc", it becomes "abcabc")
+        StringBuilder result = new StringBuilder(A + A);
+        
+        // Step 2: Loop through the concatenated string
+        // We're going to delete uppercase letters and replace vowels with '#'
+        for (int i = 0; i < result.length(); i++) {
+            char ch = result.charAt(i); // Get the character at the current position
+            
+            // If the character is uppercase, we delete it from the result
+            if (Character.isUpperCase(ch)) {
+                result.deleteCharAt(i);  // Delete uppercase letter
+                i--;  // Adjust index after deletion, since the string size is reduced
+            } 
+            // If the character is a lowercase vowel, replace it with '#'
+            else if (isVowel(ch)) {
+                result.setCharAt(i, '#'); // Replace the vowel with '#'
+            }
+        }
+        
+        // Return the final modified string
+        return result.toString();
+    }
+
+    // Helper method to check if a character is a vowel
+    // This method returns true if the character is one of 'a', 'e', 'i', 'o', 'u'
+    private boolean isVowel(char ch) {
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    }
+
+    // Main method to accept input from the user and display the result
+    public static void main(String[] args) {
+        // Create a scanner object to read input from the user
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt the user to enter a string
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine(); // Store the user input in 'input'
+        
+        // Create an instance of the Main class and call the solve method
+        Main solution = new Main();
+        String result = solution.solve(input); // Pass the user's string to 'solve' method
+        
+        // Display the result (the modified string after all operations)
+        System.out.println("Resultant string: " + result);
+    }
+}
