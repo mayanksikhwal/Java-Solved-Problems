@@ -1,0 +1,61 @@
+//Program for Maximum Subarray Sum Not Exceeding a Given Limit
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        // Create a scanner object to take user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for input A (size of the array)
+        System.out.print("Enter the size of the array (A): ");
+        int A = scanner.nextInt(); // Read the size of the array
+
+        // Prompt user for input B (maximum sum limit)
+        System.out.print("Enter the maximum sum limit (B): ");
+        int B = scanner.nextInt(); // Read the maximum sum limit
+
+        // Create an ArrayList C and prompt the user to enter the elements of the array
+        ArrayList<Integer> C = new ArrayList<>();
+        System.out.println("Enter the elements of the array (C): ");
+        for (int i = 0; i < A; i++) {
+            C.add(scanner.nextInt()); // Add each element entered by the user into the array
+        }
+
+        // Create a solution object and call the maxSubarray method to get the result
+        Main solution = new Main();
+        int result = solution.maxSubarray(A, B, C);
+
+        // Display the result to the user
+        System.out.println("Maximum sum of subarray not exceeding " + B + " is: " + result);
+    }
+
+    // Method to find the maximum sum of a subarray that does not exceed B
+    public int maxSubarray(int A, int B, ArrayList<Integer> C) {
+        int maxSum = 0; // Variable to store the maximum sum found so far
+        int currentSum = 0; // Variable to track the sum of the current subarray
+        int start = 0; // Start pointer for the sliding window (used for shrinking the window)
+
+        // Loop through each element of the array
+        for (int end = 0; end < A; end++) {
+            // Add the current element to the current sum (expand the window)
+            currentSum += C.get(end);
+
+            // If the current sum exceeds B, we need to reduce the sum by moving the start pointer
+            while (currentSum > B && start <= end) {
+                currentSum -= C.get(start); // Remove the element at the start of the window
+                start++; // Move the start pointer to the right to reduce the window size
+            }
+
+            // Check if the current sum is less than or equal to B and update the maximum sum if necessary
+            if (currentSum <= B) {
+                maxSum = Math.max(maxSum, currentSum); // Update maxSum with the larger value
+            }
+        }
+
+        // Return the maximum sum found that does not exceed B
+        return maxSum;
+    }
+}
