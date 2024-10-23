@@ -1,0 +1,63 @@
+//Program to find longest common prefix in an array of strings
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a scanner object to read user input
+        Scanner sc = new Scanner(System.in);
+
+        // Ask the user how many strings they will input
+        System.out.print("Enter the number of strings: ");
+        int n = sc.nextInt();
+        sc.nextLine();  // To consume the newline character after the integer input
+
+        // Create an ArrayList to store the input strings
+        ArrayList<String> strings = new ArrayList<>();
+
+        // Loop to get each string from the user
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter string " + (i + 1) + ": ");
+            strings.add(sc.nextLine());  // Add the string entered by the user to the list
+        }
+
+        // Create an object of the Main class to call the longestCommonPrefix method
+        Main solution = new Main();
+
+        // Call the method and store the result
+        String result = solution.longestCommonPrefix(strings);
+
+        // Print the result (the longest common prefix)
+        System.out.println("Longest Common Prefix: " + result);
+    }
+
+    // Method to find the longest common prefix among a list of strings
+    public String longestCommonPrefix(ArrayList<String> A) {
+        // If the list is empty, return an empty string as there's no common prefix
+        if (A == null || A.isEmpty()) {
+            return "";  
+        }
+
+        // Assume the first string in the list is the prefix
+        String prefix = A.get(0);
+
+        // Loop through the rest of the strings in the list
+        for (int i = 1; i < A.size(); i++) {
+            String currentString = A.get(i);  // Get the current string being compared
+
+            // Check if the current string starts with the prefix
+            while (currentString.indexOf(prefix) != 0) {
+                // If not, shorten the prefix by removing the last character
+                prefix = prefix.substring(0, prefix.length() - 1);
+
+                // If the prefix becomes empty, return an empty string (no common prefix)
+                if (prefix.isEmpty()) {
+                    return ""; 
+                }
+            }
+        }
+        // After checking all strings, return the longest common prefix
+        return prefix;
+    }
+}
