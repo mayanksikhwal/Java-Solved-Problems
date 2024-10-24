@@ -1,0 +1,60 @@
+//Program to check if the given characters in the string are alphanumeric or not
+
+import java.util.Scanner;
+
+public class Main {
+    // The main method is the entry point of the program
+    public static void main(String[] args) {
+        // Creating a Scanner object to take input from the user
+        Scanner sc = new Scanner(System.in);
+        
+        // Prompting the user to enter the number of characters
+        System.out.print("Enter the number of characters: ");
+        int n = sc.nextInt();  // Reading the number of characters
+        
+        // Creating an array to store the characters
+        char[] A = new char[n];
+        
+        // Prompting the user to enter each character one by one
+        System.out.println("Enter the characters:");
+        for (int i = 0; i < n; i++) {
+            // Reading a character from the user and storing it in the array
+            A[i] = sc.next().charAt(0);  
+        }
+        
+        // Creating an object of the Main class to call the solve method
+        Main solution = new Main();
+        
+        // Calling the solve method to check if all characters are alphanumeric
+        int result = solution.solve(A);
+        
+        // Displaying the result based on the return value of solve()
+        if (result == 1) {
+            System.out.println("Characters are alphanumeric.");  // All characters are valid
+        } else {
+            System.out.println("Characters are not alphanumeric.");  // Found a non-alphanumeric character
+        }
+    }
+
+    // Method to check if all characters in the array are alphanumeric
+    public int solve(char[] A) {
+        int n = A.length;  // Get the length of the array
+        
+        // Loop through each character in the array
+        for (int i = 0; i < n; i++) {
+            char c = A[i];  // Get the current character
+            
+            // Check if the character is either an uppercase letter, lowercase letter, or a digit
+            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')) {
+                // If it's alphanumeric, continue to the next character
+                continue;
+            }
+            
+            // If a non-alphanumeric character is found, return 0 (invalid)
+            return 0;
+        }
+        
+        // If all characters are alphanumeric, return 1 (valid)
+        return 1;
+    }
+}
