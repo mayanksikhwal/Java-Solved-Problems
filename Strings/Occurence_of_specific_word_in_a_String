@@ -1,0 +1,39 @@
+//Program to get the count or occurence of a specific word in a given String
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to read user input
+        Scanner sc = new Scanner(System.in);
+
+        // Prompt the user to enter a string
+        System.out.print("Enter a string to find occurrences of 'lol': ");
+        String A = sc.nextLine(); // Read the user's input string
+
+        // Create an instance of Main to call the solve method
+        Main solution = new Main();
+        
+        // Call the solve method to count occurrences of "lol" and store the result
+        int result = solution.solve(A);
+
+        // Display the result
+        System.out.println("Number of occurrences : " + result);
+    }
+
+    // Method to count occurrences of "lol" in the given string
+    public int solve(String A) {
+        int ans = 0; // Initialize a counter to count occurrences
+
+        // Loop through the string, stopping 2 characters before the end to check 3-character sequences
+        for (int i = 0; i + 2 < A.length(); ++i) {
+            // Check if the substring starting at index 'i' is "lol"
+            if (A.charAt(i) == 'l' && A.charAt(i + 1) == 'o' && A.charAt(i + 2) == 'l') {
+                ++ans; // Increment the counter if "lol" is found
+            }
+        }
+
+        // Return the total count of occurrences
+        return ans; 
+    }
+}
