@@ -1,0 +1,40 @@
+//Program to count amazing substring starting with vowels from a given String
+
+import java.util.Scanner; // Importing Scanner class for user input
+
+public class Main {
+    // Main method: the entry point of the program
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in); // Create a Scanner object for input
+        System.out.println("Enter a string to find the count of amazing substrings: ");
+        String A = sc.nextLine(); // Read the input string from the user
+        Main solution = new Main(); // Create an instance of the Main class
+        int result = solution.solve(A); // Call the solve method to get the result
+        System.out.println("Number of amazing substrings: " + result); // Print the result
+    }
+
+    // Method to count amazing substrings
+    public int solve(String A) {
+        int n = A.length(); // Get the length of the input string
+        long ans = 0; // Initialize the answer variable to hold the count of amazing substrings
+        char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}; // Define the array of vowels
+
+        // Loop through each character in the string
+        for (int i = 0; i < n; i++) {
+            char currentChar = A.charAt(i); // Get the current character
+
+            // Check if the current character is a vowel
+            for (char vowel : vowels) {
+                if (currentChar == vowel) {
+                    // If it's a vowel, add the number of amazing substrings starting from this vowel
+                    ans += (n - i); 
+                    break; // Break the loop as we found a vowel
+                }
+            }
+        }
+        // Return the count of amazing substrings modulo 10003
+        return (int)(ans % 10003); 
+        /* Using mod 10003 ensures that the result of the count 
+           stays within a safe numerical range and provides a consistent output format */
+    }
+}
