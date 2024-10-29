@@ -1,0 +1,42 @@
+//Program to get Cumulative Sum Transformation of an Array
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    // Method to calculate cumulative sum of elements in the array
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
+        // Start from the second element and add the previous element's value to it
+        for (int i = 1; i < A.size(); i++) {
+            A.set(i, A.get(i) + A.get(i - 1));
+        }
+        // Return the modified array with cumulative sums
+        return A;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> A = new ArrayList<>();
+
+        // Prompt the user to enter the number of elements in the array
+        System.out.println("Enter the number of elements in the array:");
+        int n = scanner.nextInt();
+
+        // Prompt the user to enter each element of the array
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            A.add(scanner.nextInt()); // Add each entered number to the array list
+        }
+
+        // Create an instance of the Main class and call the solve method
+        Main solution = new Main();
+        ArrayList<Integer> result = solution.solve(A);
+
+        // Print the resulting array with cumulative sums
+        System.out.println("Resulting array after cumulative addition:");
+        for (int num : result) {
+            System.out.print(num + " "); // Print each element in the result array
+        }
+        scanner.close(); // Close the scanner to free up resources
+    }
+}
